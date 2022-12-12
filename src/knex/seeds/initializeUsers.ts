@@ -1,29 +1,20 @@
 import * as Knex from 'knex';
 
 export async function seed(knex: Knex): Promise<void> {
-  await knex('user').del();
+  await knex('users').del();
 
-  await knex('user').insert([
+  await knex('users').insert([
     { 
       id: 1,
-      name: 'Jefferson', 
-      price: 1,
-      userId: 1,
-      active: true,
+      firstName: 'Jefferson', 
     },
     { 
       id: 2,
-      name: 'Tom', 
-      price: 2,
-      userId: 2,
-      active: true,
+      firstName: 'Tom', 
     },
     { 
       id: 3,
-      name: 'Cook', 
-      price: 3,
-      userId: 3,
-      active: true,
+      firstName: 'Cook', 
     },
   ]);
 }

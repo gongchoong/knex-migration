@@ -4,15 +4,15 @@ const config: Knex.Config = {
   client: 'pg',
   connection: { 
     connectionString: process.env.DATABASE_URL,
-    ssl: { rejectUnauthorized: false }
+    // ssl: { rejectUnauthorized: false }
   },
   migrations: {
     extension: 'ts',
-    directory: 'knex/migrations',
+    directory: './migrations',
   },
   seeds: {
     extension: 'ts',
-    directory: 'knex/seeds',
+    directory: './seeds',
   },
 };
 

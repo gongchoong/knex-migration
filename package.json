@@ -13,8 +13,15 @@
     "migrate:rollback": "npm run knex:run -- migrate:rollback --all --debug",
     "seed:make": "npm run knex:run -- seed:make --",
     "seed:run": "npm run knex:run -- seed:run --debug",
-    "start": "node dist/index.js",
-    "build": "tsc"
+    "start": "node dist/src/index.js",
+    "build": "rm -rf dist && tsc",
+    "start:docker": "npm run build && npm start",
+    "db:console": "docker compose exec postgres psql -h localhost -U postgres -d sample_db",
+    "db:migrate": "npx knex migrate:latest",
+    "docker:db:migrate": "docker compose run backend npm run db:migrate",
+    "db:seed": "npx knex seed:run",
+    "docker:db:seed": "docker compose run backend npm run db:seed",
+    "rebuild:be": "docker compose build backend && docker compose rm --stop backend && docker compose up -d backend"
   },
   "keywords": [],
   "author": "",

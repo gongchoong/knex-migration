@@ -1,13 +1,25 @@
-version: '3'
+version: "2"
 
-services:
-  postgres:
-    restart: always
-    container_name: postgres
-    image: postgres
-    environment:
-      POSTGRES_PASSWORD: "pass@123!"
+services: 
+  backend:
+    build: .
     ports:
-      - "5432:5432"
+      - 8000:8000
+      - 9229:9229 #debugger port
     volumes:
-      - ./data:/var/lib/postgresql/data
+      - .:/usr/src/app
+      - /usr/src/app/node_modules
+    command: npm run start:docker
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://postgres@postgres/sample_db
+      PORT: 8000
+
+  postgres:
+    image: mdillon/postgis
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_DB: sample_db
+      POSTGRES_HOST_AUTH_METHOD: trust

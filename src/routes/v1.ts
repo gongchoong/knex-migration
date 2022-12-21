@@ -6,5 +6,8 @@ const router = new Router({ prefix: '/v1' })
 
 router.post('/users/me', me);
 router.get('/posts/get', get);
+router.get('/test', (ctx) => {
+    ctx.body = 'Hello Hello!!!';
+  });
 
 export const v1Routes = router.routes()

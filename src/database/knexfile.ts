@@ -1,6 +1,5 @@
 // import Knex from 'knex';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-require('dotenv').config()
 
 // const config: Knex.Config = {
 //   client: 'pg',

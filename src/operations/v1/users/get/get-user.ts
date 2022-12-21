@@ -1,30 +1,21 @@
+import { needUsers } from "../../../helpers";
+import { User } from "../../../../database/models/user";
+import { userRepository } from "../../../../database/repositories/user";
 import { Operation } from "../../../operation"
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-const db = require('../../../../database/init');
 
 interface GetUserOperationInput {
     userId: number
     deviceId: string
 }
 
-interface GetUserOperationOutPut {
-    result: string
-}
-
-class GetUser extends Operation<GetUserOperationInput, GetUserOperationOutPut> {
-    protected async run(inputData: GetUserOperationInput): Promise<GetUserOperationOutPut> {
+class GetUser extends Operation<GetUserOperationInput, User[]> {
+    protected async run(inputData: GetUserOperationInput): Promise<User[]> {
         console.log(inputData.userId)
         console.log(inputData.deviceId)
-
-        //const res = await client.query('SELECT * FROM users');
-        // const res = await User.query();
-        const result = await db.select().from('users').then(function(result) {
-            console.log(result);
-            return result;
-        });
-        return {
-            result: result
-        }
+        const pagedUsers = await userRepository.findAllUsers();
+        const users = needUsers(pagedUsers.results);
+        
+        return users
     }
 }
 

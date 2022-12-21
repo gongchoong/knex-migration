@@ -1,24 +1,11 @@
-// import Knex from 'knex';
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-
-// const config: Knex.Config = {
-//   client: 'pg',
-//   connection: 'postgres://postgres:postgres@postgres:5432/sample_db',
-//   migrations: {
-//     directory: './migrations',
-//   },
-//   seeds: {
-//     directory: './seeds',
-//   },
-// };
-
-// const local = 'postgres://postgres:postgres@localhost:5432/sample_db';
+const local = 'postgres://postgres:postgres@localhost:5432/sample_db?sslmode=disable';
+// const production = process.env.DATABASE_URL;
 
 module.exports = {
   local: {
     client: 'pg',
     connection: {
-      connectionString: process.env.DATABASE_URL,
+      connectionString: local,
       ssl: { rejectUnauthorized: false },
     },
     migrations: {

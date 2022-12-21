@@ -1,5 +1,3 @@
-
-// import { client } from "../../index";
 import { getUser } from "../../operations/v1/users/get/get-user";
 import { Context } from "koa"
 import compose from "koa-compose"

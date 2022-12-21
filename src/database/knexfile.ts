@@ -1,11 +1,11 @@
-const local = 'postgres://postgres:postgres@localhost:5432/sample_db?sslmode=disable';
-// const production = process.env.DATABASE_URL;
+//const local = 'postgres://postgres:postgres@localhost:5432/sample_db?sslmode=disable';
+const production = process.env.DATABASE_URL;
 
 module.exports = {
   local: {
     client: 'pg',
     connection: {
-      connectionString: local,
+      connectionString: production,
       ssl: { rejectUnauthorized: false },
     },
     migrations: {

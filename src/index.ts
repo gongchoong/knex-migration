@@ -8,7 +8,6 @@ import { v1Routes } from './routes/v1';
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 // const { Client } = require('pg');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-require('dotenv').config()
 
 // export const client = new Client({
 //     user: 'postgres',

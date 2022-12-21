@@ -37,4 +37,4 @@ app.use(bodyParser());
 app.use(v1Routes);
 // connectDb();
 
-app.listen(port, () => console.log(`Express is listening at http://localhost:${port}`));
+app.listen(port, () => console.log(`Koa is listening at http://localhost:${port}`));

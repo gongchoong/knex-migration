@@ -13,14 +13,12 @@ require('dotenv').config()
 //   },
 // };
 
+// const local = 'postgres://postgres:postgres@localhost:5432/sample_db';
+
 module.exports = {
   local: {
-    client: 'postgresql',
-    connection: {
-      user : 'postgres',
-      password : 'postgres',
-      database : 'sample_db'
-    },
+    client: 'pg',
+    connection: process.env.DATABASE_URL,
     migrations: {
       directory: './migrations',
     },

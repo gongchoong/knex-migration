@@ -3,6 +3,6 @@ import Router from 'koa-router';
 
 const router = new Router({ prefix: '/v1' })
 
-router.post('/users/me', users.me);
+router.get('/users/me', users.me);
 
 export const v1Routes = router.routes()

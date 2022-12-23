@@ -5,7 +5,23 @@
       "target": "es6",
       "moduleResolution": "node",
       "sourceMap": true,
-      "outDir": "dist"
+      "outDir": "dist",
+      "baseUrl": "./",
+      "paths": {
+        "@app/*": ["src/*"],
+        "@controllers/*": ["src/controllers/*"],
+        "@models/*": ["src/database/models/*"],
+        "@repositories/*": ["src/database/repositories/*"],
+        "@operations/*": ["src/operations/*"],
+        "@services/*": ["src/services/*"],
+  
+        "@tests/*": ["tests/*"],
+        "@integration/*": ["tests/integration/*"],
+        "@unit/*": ["tests/unit/*"],
+        "@data/*": ["tests/data/*"]
+      },
     },
+    "exclude": ["node_modules", ".vscode"],
+    "include": ["src/**/*.ts"],
     "lib": ["es2015"]
   }

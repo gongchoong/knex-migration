@@ -7,7 +7,10 @@ const local = 'postgres://postgres:postgres@host.docker.internal:5432/sample_db?
 
 const defaultOptions: Knex.Config = {
   client: 'pg',
-    connection: local,
+    connection: {
+      connectionString: local,
+      ssl: { rejectUnauthorized: false },
+    },
     ...knexSnakeCaseMappers(),
     migrations: {
       directory: './migrations',
